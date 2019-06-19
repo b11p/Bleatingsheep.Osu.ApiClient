@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.3;netstandard2.0;net46</TargetFrameworks>
+    <Version>0.5.5</Version>
+    <Authors>bleatingsheep</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>bleatingsheep</Copyright>
+    <Description>osu! API Client.</Description>
+    <PackageTags>osu</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bleatingsheep.Osu.Enums" Version="0.6.0-beta2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="WebApiClient.AOT" Version="1.0.9" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,26 @@
+﻿[
+    {
+        "user_id": "13721581",
+        "username": "Osu__Miku",
+        "join_date": "2019-01-07 12:00:13",
+        "count300": null,
+        "count100": null,
+        "count50": null,
+        "playcount": null,
+        "ranked_score": null,
+        "total_score": null,
+        "pp_rank": null,
+        "level": null,
+        "pp_raw": null,
+        "accuracy": null,
+        "count_rank_ss": null,
+        "count_rank_ssh": null,
+        "count_rank_s": null,
+        "count_rank_sh": null,
+        "count_rank_a": null,
+        "country": "CN",
+        "total_seconds_played": null,
+        "pp_country_rank": null,
+        "events": []
+    }
+]

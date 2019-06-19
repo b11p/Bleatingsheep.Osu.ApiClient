@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bleatingsheep.Osu.ApiClient", "Bleatingsheep.Osu.ApiClient\Bleatingsheep.Osu.ApiClient.csproj", "{E4D0E8A4-7C75-4BEB-84B6-D9835F51A18B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bleatingsheep.Osu.ApiClient.Tests.Console", "Bleatingsheep.Osu.ApiClient.Tests.Console\Bleatingsheep.Osu.ApiClient.Tests.Console.csproj", "{E593106C-B405-4283-9609-3AE4CF5C63FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4D0E8A4-7C75-4BEB-84B6-D9835F51A18B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4D0E8A4-7C75-4BEB-84B6-D9835F51A18B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4D0E8A4-7C75-4BEB-84B6-D9835F51A18B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4D0E8A4-7C75-4BEB-84B6-D9835F51A18B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E593106C-B405-4283-9609-3AE4CF5C63FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E593106C-B405-4283-9609-3AE4CF5C63FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E593106C-B405-4283-9609-3AE4CF5C63FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E593106C-B405-4283-9609-3AE4CF5C63FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {796636FF-D100-43D6-B007-6A550A414C6F}
+	EndGlobalSection
+EndGlobal

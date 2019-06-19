@@ -1,0 +1,41 @@
+﻿[
+    {
+        "user_id": "9590557",
+        "username": "Firika",
+        "join_date": "2017-01-16 23:57:22",
+        "count300": "399",
+        "count100": "192",
+        "count50": "5",
+        "playcount": "1",
+        "ranked_score": "461654",
+        "total_score": "461654",
+        "pp_rank": "1024450",
+        "level": "4.33793",
+        "pp_raw": "0",
+        "accuracy": "79.49714660644531",
+        "count_rank_ss": "0",
+        "count_rank_ssh": "0",
+        "count_rank_s": "0",
+        "count_rank_sh": "0",
+        "count_rank_a": "0",
+        "country": "CN",
+        "total_seconds_played": "115",
+        "pp_country_rank": "41267",
+        "events": [
+            {
+                "display_html": "<img src='\/images\/B_small.png'\/> <b><a href='\/u\/9590557'>Firika<\/a><\/b> achieved rank #136 on <a href='\/b\/1947706?m=0'>Mili - Ga1ahad and Scientific Witchery [617]<\/a> (osu!)",
+                "beatmap_id": "1947706",
+                "beatmapset_id": "932901",
+                "date": "2019-05-29 13:53:01",
+                "epicfactor": "1"
+            },
+            {
+                "display_html": "<img src='\/images\/A_small.png'\/> <b><a href='\/u\/9590557'>Firika<\/a><\/b> achieved rank #833 on <a href='\/b\/1797548?m=0'>Will Stetson - Harumachi Clover (Swing Arrangement) [Akitoshi's Extra]<\/a> (osu!)",
+                "beatmap_id": "1797548",
+                "beatmapset_id": "859783",
+                "date": "2019-05-29 05:30:28",
+                "epicfactor": "1"
+            }
+        ]
+    }
+]
