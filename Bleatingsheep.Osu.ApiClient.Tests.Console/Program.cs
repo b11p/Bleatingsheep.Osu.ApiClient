@@ -15,8 +15,8 @@ namespace Bleatingsheep.Osu.ApiClient.Tests.Console
             IOsuApiClient osuApiClient = factory.CreateHttpApi();
             var user = await osuApiClient.GetUser(6659067, Mode.Mania);
             var user2 = await osuApiClient.GetUser("bleatingsheep");
-            var beatmaps = await osuApiClient.GetBeatmaps(Mode.Mania);
-            var s = await osuApiClient.GetScores(1, null, Mode.Standard, 100);
+            var beatmaps = await osuApiClient.GetBeatmaps(Mode.Mania, false, DateTime.Now, 100);
+            var s = await osuApiClient.GetScores(1, Mode.Standard, 100);
         }
     }
 }

@@ -13,7 +13,9 @@ using WebApiClient.DataAnnotations;
 namespace Bleatingsheep.Osu.ApiClient
 {
     [HttpHost("https://osu.ppy.sh/api/")]
-    //[TraceFilter(OutputTarget = OutputTarget.Console)]
+#if DEBUG
+    [TraceFilter(OutputTarget = OutputTarget.Console)]
+#endif
     public interface IOsuApiClient : IHttpApi
     {
         [HttpGet("get_user")]
@@ -64,7 +66,7 @@ namespace Bleatingsheep.Osu.ApiClient
 
         [HttpGet("get_beatmaps")]
         Task<BeatmapInfo[]> GetBeatmaps(
-            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s")] DateTime? since = null,
+            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s", IgnoreWhenNull = true)] DateTime? since = null,
             [AliasAs("limit")] int limit = 500,
             [AliasAs("mods")] Mods mods = Mods.None);
 
@@ -72,7 +74,7 @@ namespace Bleatingsheep.Osu.ApiClient
         Task<BeatmapInfo[]> GetBeatmaps(
             [AliasAs("m")] Mode mode,
             [AliasAs("a"), Type(TypeCode.Int32)] bool includeConvertedBeatmaps = false,
-            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s")] DateTime? since = null,
+            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s", IgnoreWhenNull = true)] DateTime? since = null,
             [AliasAs("limit")] int limit = 500,
             [AliasAs("mods")] Mods mods = Mods.None);
 
@@ -80,7 +82,7 @@ namespace Bleatingsheep.Osu.ApiClient
         [AddUrlQueryFilter("type", "id")]
         Task<BeatmapInfo[]> GetBeatmapsFromUser(
             [AliasAs("u")] int userId,
-            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s")] DateTime? since = null,
+            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s", IgnoreWhenNull = true)] DateTime? since = null,
             [AliasAs("limit")] int limit = 500,
             [AliasAs("mods")] Mods mods = Mods.None);
 
@@ -90,7 +92,7 @@ namespace Bleatingsheep.Osu.ApiClient
             [AliasAs("u")] int userId,
             [AliasAs("m")] Mode mode,
             [AliasAs("a"), Type(TypeCode.Int32)] bool includeConvertedBeatmaps = false,
-            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s")] DateTime? since = null,
+            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s", IgnoreWhenNull = true)] DateTime? since = null,
             [AliasAs("limit")] int limit = 500,
             [AliasAs("mods")] Mods mods = Mods.None);
 
@@ -98,7 +100,7 @@ namespace Bleatingsheep.Osu.ApiClient
         [AddUrlQueryFilter("type", "string")]
         Task<BeatmapInfo[]> GetBeatmapsFromUser(
             [AliasAs("u"), Required] string userName,
-            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s")] DateTime? since = null,
+            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s", IgnoreWhenNull = true)] DateTime? since = null,
             [AliasAs("limit")] int limit = 500,
             [AliasAs("mods")] Mods mods = Mods.None);
 
@@ -108,7 +110,7 @@ namespace Bleatingsheep.Osu.ApiClient
             [AliasAs("u"), Required] string userName,
             [AliasAs("m")] Mode mode,
             [AliasAs("a"), Type(TypeCode.Int32)] bool includeConvertedBeatmaps = false,
-            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s")] DateTime? since = null,
+            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s", IgnoreWhenNull = true)] DateTime? since = null,
             [AliasAs("limit")] int limit = 500,
             [AliasAs("mods")] Mods mods = Mods.None);
 
@@ -127,9 +129,11 @@ namespace Bleatingsheep.Osu.ApiClient
         /// <summary>
         /// Retrieve information about the top 100 scores of a specified beatmap.
         /// </summary>
+        /// <param name="beatmapId"></param>
         /// <param name="mode">Mode. Note that default value is <see cref="Mode.Standard"/>,
         /// even if the beatmap is not an osu!standard beatmap. In that case, an empty array
         /// will be returned.</param>
+        /// <param name="limit"></param>
         /// <returns></returns>
         [HttpGet("get_scores")]
         Task<ScoreInfo[]> GetScores(
@@ -140,9 +144,12 @@ namespace Bleatingsheep.Osu.ApiClient
         /// <summary>
         /// Retrieve information about the top 100 scores of a specified beatmap.
         /// </summary>
+        /// <param name="beatmapId"></param>
+        /// <param name="userId"></param>
         /// <param name="mode">Mode. Note that default value is <see cref="Mode.Standard"/>,
         /// even if the beatmap is not an osu!standard beatmap. In that case, an empty array
         /// will be returned.</param>
+        /// <param name="limit"></param>
         /// <returns></returns>
         [HttpGet("get_scores")]
         [AddUrlQueryFilter("type", "id")]
@@ -155,9 +162,12 @@ namespace Bleatingsheep.Osu.ApiClient
         /// <summary>
         /// Retrieve information about the top 100 scores of a specified beatmap.
         /// </summary>
+        /// <param name="beatmapId"></param>
+        /// <param name="userName"></param>
         /// <param name="mode">Mode. Note that default value is <see cref="Mode.Standard"/>,
         /// even if the beatmap is not an osu!standard beatmap. In that case, an empty array
         /// will be returned.</param>
+        /// <param name="limit"></param>
         /// <returns></returns>
         [HttpGet("get_scores")]
         [AddUrlQueryFilter("type", "string")]
@@ -170,9 +180,12 @@ namespace Bleatingsheep.Osu.ApiClient
         /// <summary>
         /// Retrieve information about the top 100 scores of a specified beatmap.
         /// </summary>
+        /// <param name="beatmapId"></param>
         /// <param name="mode">Mode. Note that default value is <see cref="Mode.Standard"/>,
         /// even if the beatmap is not an osu!standard beatmap. In that case, an empty array
         /// will be returned.</param>
+        /// <param name="limit"></param>
+        /// <param name="mods"></param>
         /// <returns></returns>
         [HttpGet("get_scores")]
         Task<ScoreInfo[]> GetScores(
@@ -184,9 +197,13 @@ namespace Bleatingsheep.Osu.ApiClient
         /// <summary>
         /// Retrieve information about the top 100 scores of a specified beatmap.
         /// </summary>
+        /// <param name="beatmapId"></param>
+        /// <param name="userId"></param>
         /// <param name="mode">Mode. Note that default value is <see cref="Mode.Standard"/>,
         /// even if the beatmap is not an osu!standard beatmap. In that case, an empty array
         /// will be returned.</param>
+        /// <param name="limit"></param>
+        /// <param name="mods"></param>
         /// <returns></returns>
         [HttpGet("get_scores")]
         [AddUrlQueryFilter("type", "id")]
@@ -200,9 +217,13 @@ namespace Bleatingsheep.Osu.ApiClient
         /// <summary>
         /// Retrieve information about the top 100 scores of a specified beatmap.
         /// </summary>
+        /// <param name="beatmapId"></param>
+        /// <param name="userName"></param>
         /// <param name="mode">Mode. Note that default value is <see cref="Mode.Standard"/>,
         /// even if the beatmap is not an osu!standard beatmap. In that case, an empty array
         /// will be returned.</param>
+        /// <param name="limit"></param>
+        /// <param name="mods"></param>
         /// <returns></returns>
         [HttpGet("get_scores")]
         [AddUrlQueryFilter("type", "string")]
@@ -302,7 +323,7 @@ namespace Bleatingsheep.Osu.ApiClient
         {
             if (apiKeys == null)
             {
-                throw new System.ArgumentNullException(nameof(apiKeys));
+                throw new ArgumentNullException(nameof(apiKeys));
             }
 
             if (!_apiKeys.Any())
@@ -346,7 +367,8 @@ namespace Bleatingsheep.Osu.ApiClient
                 apiKey = _apiKey;
             }
             context.RequestMessage.AddUrlQuery("k", apiKey);
-            return base.OnBeginRequestAsync(context);
+            //return base.OnBeginRequestAsync(context);
+            return Task.CompletedTask;
         }
 
         public Task OnEndRequestAsync(ApiActionContext context) => Task.CompletedTask;

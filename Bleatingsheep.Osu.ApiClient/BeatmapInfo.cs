@@ -64,6 +64,15 @@ namespace Bleatingsheep.Osu.ApiClient
         [JsonProperty("mode")]
         public Mode Mode { get; set; }
 
+        [JsonProperty("count_normal")]
+        public int CountNormal { get; set; }
+
+        [JsonProperty("count_slider")]
+        public int CountSlider { get; set; }
+
+        [JsonProperty("count_spinner")]
+        public int CountSpinner { get; set; }
+
         [JsonProperty("submit_date")]
         public DateTime SubmitDate { get; set; }
 
@@ -111,6 +120,24 @@ namespace Bleatingsheep.Osu.ApiClient
 
         [JsonProperty("rating", NullValueHandling = NullValueHandling.Ignore)]
         public double Rating { get; set; }
+
+        [JsonProperty("download_unavailable")]
+        private int _downloadUnavailable;
+
+        public bool DownloadUnavailable
+        {
+            get => Convert.ToBoolean(_downloadUnavailable);
+            set => _downloadUnavailable = Convert.ToInt32(value);
+        }
+
+        [JsonProperty("audio_unavailable")]
+        private int _audioUnavailable;
+
+        public bool AudioUnavailable
+        {
+            get => Convert.ToBoolean(_audioUnavailable);
+            set => _audioUnavailable = Convert.ToInt32(value);
+        }
 
         [JsonProperty("playcount")]
         public long PlayCount { get; set; }
