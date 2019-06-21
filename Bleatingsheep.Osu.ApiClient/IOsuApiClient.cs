@@ -66,7 +66,7 @@ namespace Bleatingsheep.Osu.ApiClient
 
         [HttpGet("get_beatmaps")]
         Task<BeatmapInfo[]> GetBeatmaps(
-            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s", IgnoreWhenNull = true)] DateTime? since = null,
+            [AliasAs("since"), UtcDateTime] DateTime? since = null,
             [AliasAs("limit")] int limit = 500,
             [AliasAs("mods")] Mods mods = Mods.None);
 
@@ -74,7 +74,7 @@ namespace Bleatingsheep.Osu.ApiClient
         Task<BeatmapInfo[]> GetBeatmaps(
             [AliasAs("m")] Mode mode,
             [AliasAs("a"), Type(TypeCode.Int32)] bool includeConvertedBeatmaps = false,
-            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s", IgnoreWhenNull = true)] DateTime? since = null,
+            [AliasAs("since"), UtcDateTime] DateTime? since = null,
             [AliasAs("limit")] int limit = 500,
             [AliasAs("mods")] Mods mods = Mods.None);
 
@@ -82,7 +82,7 @@ namespace Bleatingsheep.Osu.ApiClient
         [AddUrlQueryFilter("type", "id")]
         Task<BeatmapInfo[]> GetBeatmapsFromUser(
             [AliasAs("u")] int userId,
-            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s", IgnoreWhenNull = true)] DateTime? since = null,
+            [AliasAs("since"), UtcDateTime] DateTime? since = null,
             [AliasAs("limit")] int limit = 500,
             [AliasAs("mods")] Mods mods = Mods.None);
 
@@ -92,7 +92,7 @@ namespace Bleatingsheep.Osu.ApiClient
             [AliasAs("u")] int userId,
             [AliasAs("m")] Mode mode,
             [AliasAs("a"), Type(TypeCode.Int32)] bool includeConvertedBeatmaps = false,
-            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s", IgnoreWhenNull = true)] DateTime? since = null,
+            [AliasAs("since"), UtcDateTime] DateTime? since = null,
             [AliasAs("limit")] int limit = 500,
             [AliasAs("mods")] Mods mods = Mods.None);
 
@@ -100,7 +100,7 @@ namespace Bleatingsheep.Osu.ApiClient
         [AddUrlQueryFilter("type", "string")]
         Task<BeatmapInfo[]> GetBeatmapsFromUser(
             [AliasAs("u"), Required] string userName,
-            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s", IgnoreWhenNull = true)] DateTime? since = null,
+            [AliasAs("since"), UtcDateTime] DateTime? since = null,
             [AliasAs("limit")] int limit = 500,
             [AliasAs("mods")] Mods mods = Mods.None);
 
@@ -110,7 +110,7 @@ namespace Bleatingsheep.Osu.ApiClient
             [AliasAs("u"), Required] string userName,
             [AliasAs("m")] Mode mode,
             [AliasAs("a"), Type(TypeCode.Int32)] bool includeConvertedBeatmaps = false,
-            [AliasAs("since"), PathQuery("yyyy-M-d H:m:s", IgnoreWhenNull = true)] DateTime? since = null,
+            [AliasAs("since"), UtcDateTime] DateTime? since = null,
             [AliasAs("limit")] int limit = 500,
             [AliasAs("mods")] Mods mods = Mods.None);
 
@@ -277,6 +277,25 @@ namespace Bleatingsheep.Osu.ApiClient
             context.RequestMessage.AddUrlQuery(
                 parameter.Name,
                 Convert.ToString(convertedValue, CultureInfo.InvariantCulture));
+            return Task.CompletedTask;
+        }
+    }
+
+    [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false)]
+    internal class UtcDateTimeAttribute : Attribute, IApiParameterAttribute
+    {
+        public UtcDateTimeAttribute()
+        { }
+
+        public Task BeforeRequestAsync(ApiActionContext context, ApiParameterDescriptor parameter)
+        {
+            var convertedValue = parameter.Value as DateTime?;
+            if (convertedValue != null)
+            {
+                context.RequestMessage.AddUrlQuery(
+                    parameter.Name,
+                    Convert.ToString(convertedValue?.ToUniversalTime().ToString("yyyy-M-d H:m:s", CultureInfo.InvariantCulture), CultureInfo.InvariantCulture));
+            }
             return Task.CompletedTask;
         }
     }
