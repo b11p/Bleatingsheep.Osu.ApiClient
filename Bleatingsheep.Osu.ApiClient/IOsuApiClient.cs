@@ -15,6 +15,8 @@ namespace Bleatingsheep.Osu.ApiClient
     [HttpHost("https://osu.ppy.sh/api/")]
 #if DEBUG
     [TraceFilter(OutputTarget = OutputTarget.Console)]
+#else
+    [TraceFilter(OutputTarget = OutputTarget.LoggerFactory)]
 #endif
     public interface IOsuApiClient : IHttpApi
     {

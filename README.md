@@ -38,7 +38,6 @@ public void ConfigureServices(IServiceCollection services)
         return OsuApiClientFactory.CreateFactory("your-API-key",
             c =>
             {
-                c.LoggerFactory = p.GetRequiredService<ILoggerFactory>();
                 c.GlobalFilters.Add(new TraceFilterAttribute { OutputTarget = OutputTarget.LoggerFactory });
             });
     });
