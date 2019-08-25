@@ -59,7 +59,13 @@ namespace Bleatingsheep.Osu.ApiClient
         /// <summary>
         /// Accuracy that ranges from 0 to 1.
         /// </summary>
-        public double AccuracyRatio => AccuracyPercent / 100;
+        [Obsolete("Please use AccuracyFloat.")]
+        public double AccuracyRatio => AccuracyFloat;
+
+        /// <summary>
+        /// Accuracy that ranges from 0 to 1.
+        /// </summary>
+        public double AccuracyFloat => AccuracyPercent / 100;
 
         [JsonProperty("count_rank_ss", NullValueHandling = NullValueHandling.Ignore)]
         public int CountRankSS { get; set; }
