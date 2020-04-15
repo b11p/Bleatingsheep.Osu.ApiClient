@@ -347,7 +347,7 @@ namespace Bleatingsheep.Osu.ApiClient
                 throw new ArgumentNullException(nameof(apiKeys));
             }
 
-            if (!_apiKeys.Any())
+            if (!apiKeys.Any())
                 throw new ArgumentException($"{nameof(apiKeys)} does not contain any elements.");
 
             if (apiKeys.Count() > 1)
