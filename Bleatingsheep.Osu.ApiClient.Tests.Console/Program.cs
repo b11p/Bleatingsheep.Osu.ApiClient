@@ -12,7 +12,7 @@ namespace Bleatingsheep.Osu.ApiClient.Tests.Console
         {
             System.Console.WriteLine("Please provide API Key.");
             string apiKey = System.Console.ReadLine();
-            var factory = OsuApiClientFactory.CreateFactory(apiKey);
+            var factory = OsuApiClientFactory.CreateFactory(new[] { "a", "b" });
             IOsuApiClient osuApiClient = factory.CreateHttpApi();
             var user = await osuApiClient.GetUser(6659067, Mode.Mania);
             var user2 = await osuApiClient.GetUser("bleatingsheep");
