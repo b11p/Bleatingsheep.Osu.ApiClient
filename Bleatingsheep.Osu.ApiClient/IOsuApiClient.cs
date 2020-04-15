@@ -266,7 +266,7 @@ namespace Bleatingsheep.Osu.ApiClient
     }
 
     [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false)]
-    internal class TypeAttribute : Attribute, IApiParameterAttribute
+    internal sealed class TypeAttribute : Attribute, IApiParameterAttribute
     {
         private readonly TypeCode _typeCode;
 
@@ -284,7 +284,7 @@ namespace Bleatingsheep.Osu.ApiClient
     }
 
     [AttributeUsage(AttributeTargets.Parameter, AllowMultiple = false)]
-    internal class UtcDateTimeAttribute : Attribute, IApiParameterAttribute
+    internal sealed class UtcDateTimeAttribute : Attribute, IApiParameterAttribute
     {
         public UtcDateTimeAttribute()
         { }
@@ -305,7 +305,7 @@ namespace Bleatingsheep.Osu.ApiClient
     /// <summary>
     /// Represents that the return value is an array but includes no more than one element.
     /// </summary>
-    internal class OneElementArrayJsonReturnAttribute : JsonReturnAttribute
+    internal sealed class OneElementArrayJsonReturnAttribute : JsonReturnAttribute
     {
         protected override async Task<object> GetTaskResult(ApiActionContext context)
         {
@@ -398,7 +398,7 @@ namespace Bleatingsheep.Osu.ApiClient
     /// <summary>
     /// Add url query string.
     /// </summary>
-    internal class AddUrlQueryFilterAttribute : ApiActionFilterAttribute
+    internal sealed class AddUrlQueryFilterAttribute : ApiActionFilterAttribute
     {
         private readonly string _key;
         private readonly string _value;
