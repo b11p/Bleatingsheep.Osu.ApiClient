@@ -107,10 +107,10 @@ namespace Bleatingsheep.Osu.ApiClient
         [JsonProperty("display_html")]
         public string DisplayHtml { get; set; }
 
-        [JsonProperty("beatmap_id")]
+        [JsonProperty("beatmap_id", NullValueHandling = NullValueHandling.Ignore)]
         public int BeatmapId { get; set; }
 
-        [JsonProperty("beatmapset_id")]
+        [JsonProperty("beatmapset_id", NullValueHandling = NullValueHandling.Ignore)]
         public int BeatmapSetId { get; set; }
 
         [JsonProperty("date")]
